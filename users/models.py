@@ -19,7 +19,7 @@ class UserProfile(models.Model):
 class Comments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment_title = models.CharField(max_length=200)
-    comment = MDTextField()
+    comment = models.TextField()
 
 
     def __str__(self):
@@ -30,7 +30,7 @@ class Problems(models.Model):
     firstname = models.CharField(max_length=30)
     email = models.EmailField()
     problem_name = models.CharField(max_length=30)
-    problem_description = MDTextField()
+    problem_description = models.TextField()
 
     def __str__(self):
         return f'{self.problem_name}'

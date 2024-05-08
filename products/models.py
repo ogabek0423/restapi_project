@@ -11,7 +11,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=30)
-    description = MDTextField()
+    description = models.TextField()
     image = models.ImageField(upload_to='products/my_pic')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     price = models.FloatField()
