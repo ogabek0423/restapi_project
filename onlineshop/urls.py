@@ -12,7 +12,7 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('thank/', ThankYouView.as_view(), name='thank'),
     path(r'mdeditor/', include('mdeditor.urls')),
-    path('api/v1/', include('api.urls')),
+    # path('api/v1/', include('api.urls')),
     path('', include('api.urls')),
 ]
 

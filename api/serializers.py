@@ -1,14 +1,14 @@
 from rest_framework import serializers
 from music.models import Album, Artist, Song
 from products.models import Product, Category, Bestsellers, FeaturedItems
-from users.models import Comments, Problems
+from users.models import Comments, Problems, UserProfile
 from django.contrib.auth.models import User
 
 
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artist
-        fields = '__all__'
+        fields = ['first_name', 'last_name', 'age', 'image']
 
 
 class AlbumSerializer(serializers.ModelSerializer):
@@ -16,7 +16,7 @@ class AlbumSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Album
-        fields = '__all__'
+        fields = ['name', 'artist', 'created', 'image']
 
 
 class SongSerializer(serializers.ModelSerializer):
@@ -24,13 +24,13 @@ class SongSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Song
-        fields = '__all__'
+        fields = ['title', 'artist', 'created', 'duration', 'music']
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = ['name']
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -38,7 +38,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['name', 'description', 'price', 'image', 'category', 'count']
 
 
 class BestsellersSerializer(serializers.ModelSerializer):
@@ -46,7 +46,7 @@ class BestsellersSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bestsellers
-        fields = '__all__'
+        fields = ['name', 'product']
 
 
 class FeaturedItemsSerializer(serializers.ModelSerializer):
@@ -54,16 +54,25 @@ class FeaturedItemsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FeaturedItems
-        fields = '__all__'
+        fields = ['name', 'product', 'chegirma']
 
 
 class CommentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
-        fields = '__all__'
+        fields = ['user', 'comment_title', 'comment']
 
 
 class ProblemsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Problems
-        fields = '__all__'
+        fields = ['firstname', 'email', 'problem_name', 'problem_description']
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ['user', 'age', 'image']
+
+
+

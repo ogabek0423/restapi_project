@@ -5,10 +5,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
-from users.models import Problems, Comments
+from users.models import Problems, Comments, UserProfile
 from .serializers import AlbumSerializer, ArtistSerializer, SongSerializer, CategorySerializer, ProductSerializer
 from .serializers import BestsellersSerializer, FeaturedItemsSerializer, CommentsSerializer
-from .serializers import ProblemsSerializer
+from .serializers import ProblemsSerializer, UserProfileSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import filters
@@ -105,6 +105,18 @@ class ProblemViewSet(ModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ['problem_name', 'problem_description', ]
     pagination_class = LimitOffsetPagination
+
+
+class UserProfileViewSet(ModelViewSet):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
+    permission_classes = [IsAuthenticated,]
+    authentication_classes = [TokenAuthentication,]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['user__username', 'user__first_name', 'user__last_name', 'age']
+    pagination_class = LimitOffsetPagination
+
+
 
 
 

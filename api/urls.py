@@ -1,6 +1,6 @@
 from django.urls import path, include
 from .views import SongViewSet, ArtistViewSet, AlbumViewSet, CategoryViewSet, ProductViewSet, BestsellerViewSet
-from .views import FavoriteViewSet, CommentViewSet, ProblemViewSet
+from .views import FavoriteViewSet, CommentViewSet, ProblemViewSet, UserProfileViewSet
 from rest_framework.routers import DefaultRouter
 
 from rest_framework import permissions
@@ -30,6 +30,7 @@ router.register(prefix='bestseller', viewset=BestsellerViewSet)
 router.register(prefix='favorite', viewset=FavoriteViewSet)
 router.register(prefix='comment', viewset=CommentViewSet)
 router.register(prefix='problem', viewset=ProblemViewSet)
+router.register(prefix='userprofile', viewset=UserProfileViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
