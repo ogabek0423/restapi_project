@@ -36,6 +36,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('docs-swagger/', schema_view.with_ui("swagger", cache_timeout=0), name='swagger'),
     path('docs-redoc/', schema_view.with_ui("redoc", cache_timeout=0), name='redoc'),
+
 ]
 
 

@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artist
-        fields = ['first_name', 'last_name', 'age', 'image']
+        fields = ['id', 'first_name', 'last_name', 'age', 'image', 'page_views', 'created']
 
 
 class AlbumSerializer(serializers.ModelSerializer):
@@ -16,7 +16,7 @@ class AlbumSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Album
-        fields = ['name', 'artist', 'created', 'image']
+        fields = ['id', 'name', 'artist', 'created', 'image', 'views']
 
 
 class SongSerializer(serializers.ModelSerializer):
@@ -24,13 +24,13 @@ class SongSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Song
-        fields = ['title', 'artist', 'created', 'duration', 'music']
+        fields = ['id', 'title', 'artist', 'created', 'duration', 'music', 'listens']
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['name']
+        fields = ['id', 'name']
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -38,7 +38,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['name', 'description', 'price', 'image', 'category', 'count']
+        fields = ['id', 'name', 'description', 'price', 'image', 'category', 'count']
 
 
 class BestsellersSerializer(serializers.ModelSerializer):
@@ -46,7 +46,7 @@ class BestsellersSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bestsellers
-        fields = ['name', 'product']
+        fields = ['id', 'name', 'product', 'views']
 
 
 class FeaturedItemsSerializer(serializers.ModelSerializer):
@@ -54,25 +54,25 @@ class FeaturedItemsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FeaturedItems
-        fields = ['name', 'product', 'chegirma']
+        fields = ['id', 'name', 'product', 'chegirma']
 
 
 class CommentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
-        fields = ['user', 'comment_title', 'comment']
+        fields = ['id', 'user', 'comment_title', 'comment', 'created']
 
 
 class ProblemsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Problems
-        fields = ['firstname', 'email', 'problem_name', 'problem_description']
+        fields = ['id', 'firstname', 'email', 'problem_name', 'problem_description', 'created_at',]
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['user', 'age', 'image']
+        fields = ['user', 'age', 'image', 'creation_date']
 
 
 

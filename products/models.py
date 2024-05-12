@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-from mdeditor.fields import MDTextField
+# from mdeditor.fields import MDTextField
 
 
 class Category(models.Model):
@@ -8,6 +8,13 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['id']
+        indexes = [
+            models.Index(fields=['id'])
+        ]
+
 
 class Product(models.Model):
     name = models.CharField(max_length=30)
@@ -20,13 +27,26 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['id']
+        indexes = [
+            models.Index(fields=['id'])
+        ]
+
 
 class Bestsellers(models.Model):
     name = models.CharField(max_length=20)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    views = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.name} {self.product}'
+
+    class Meta:
+        ordering = ['id']
+        indexes = [
+            models.Index(fields=['id'])
+        ]
 
 
 class FeaturedItems(models.Model):
@@ -37,4 +57,8 @@ class FeaturedItems(models.Model):
     def __str__(self):
         return f'{self.name}'
 
-
+    class Meta:
+        ordering = ['id']
+        indexes = [
+            models.Index(fields=['id'])
+        ]
