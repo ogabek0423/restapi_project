@@ -17,7 +17,6 @@ from rest_framework.decorators import action
 from django.db.transaction import atomic
 
 
-
 class AlbumViewSet(ModelViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
